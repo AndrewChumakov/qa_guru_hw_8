@@ -84,3 +84,4 @@ class TestCart:
         cart.add_product(product, 1001)
         with pytest.raises(ValueError):
             cart.buy()
+
