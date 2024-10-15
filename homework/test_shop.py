@@ -10,13 +10,16 @@ from homework.models import Product, Cart
 def product():
     return Product("book", 100, "This is a book", 1000)
 
+
 @pytest.fixture
 def other_product():
     return Product("paper", 20, "This is a paper", 2000)
 
+
 @pytest.fixture
 def cart():
     return Cart()
+
 
 class TestProducts:
     """
@@ -27,7 +30,6 @@ class TestProducts:
     def test_product_check_quantity(self, product):
         assert product.check_quantity(1001) is False
         assert product.check_quantity(1000) is True
-
 
     def test_product_buy(self, product):
         product.buy(900)
@@ -46,7 +48,7 @@ class TestCart:
         assert cart.products[product] == 1
         cart.add_product(other_product, 100)
         assert cart.products[other_product] == 100
-        cart.add_product(product,2)
+        cart.add_product(product, 2)
         assert cart.products[product] == 3
 
     def test_cart_remove_product(self, product, cart):
@@ -84,4 +86,3 @@ class TestCart:
         cart.add_product(product, 1001)
         with pytest.raises(ValueError):
             cart.buy()
-

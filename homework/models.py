@@ -66,7 +66,6 @@ class Cart:
         else:
             self.products[product] = self.products[product] - remove_count
 
-
     def clear(self):
         self.products.clear()
 
